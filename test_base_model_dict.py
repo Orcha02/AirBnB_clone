@@ -2,8 +2,9 @@
 from models.base_model import BaseModel
 
 my_model = BaseModel()
-my_model.name = "Holberton"
-my_model.my_number = 89
+my_model.nombre = "Holberton"
+my_model.my_numero = 89
+my_model.apellid = "Toribio"
 print(f"my_model.id: {my_model.id}")
 print(f"my_model: {my_model}")
 print(f"my_model type: {type(my_model.created_at)}")
