@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 import cmd
 import shlex
-import models
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """" HBNBcommand class interpreter """
 
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
     myClasses = ["BaseModel", "User", "Place", "State",
                  "City", "Amenity", "Review"]
 
@@ -23,20 +25,50 @@ class HBNBCommand(cmd.Cmd):
         Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id
         """
-        args = shlex.split(args)
-        if args == []:
-            print("** class name missing **")
-        elif args[0] not in HBNBCommand.__myClasses:
+    
+        try:
+            args = shlex.split(args)
+            if args == []:
+                print("** class name missing **")
+                return
+            else:
+                expresion = args[0]
+                new_ins = eval(expresion)()
+                new_ins.save()
+                print(new_ins.id)
+                return
+        except:
             print("** class doesn't exist **")
-        pass
+            return
 
-    def do_show(self, line):
+    def do_show(self, args):
         """
         Prints the string representation of an instance
         based on the class name and id
         """
-        pass
+        args = shlex.split(args)
+        key = ""
+        obj_dict = storage.all()
+        if args == []:
+            print("** class name missing **")
+            return
 
+        try:            
+            eval(args[0])
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+                
+        key = str(args[0]) + "." + str(args[1])
+        try:
+            print(obj_dict[key])
+        except KeyError:
+            print("** no instance found **")
+            
 
     def do_destroy(self, line):
         """

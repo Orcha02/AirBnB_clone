@@ -39,7 +39,7 @@ class FileStorage:
             Deserializes the JSON file to __objects.
         '''
         try:
-            with open(self.__file_path, 'r', encoding="UTF-8") as f:
+            with open(self.__file_path, 'r', encoding="utf-8") as f:
                 for key, val in (json.load(f)).items():
                     val = eval(val["__class__"])(**val)
                     self.__objects[key] = val
