@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 import cmd
+import shlex
+import models
 
 class HBNBCommand(cmd.Cmd):
     """" HBNBcommand class interpreter """
 
     prompt = '(hbnb)'
+    myClasses = ["BaseModel", "User", "Place", "State",
+                 "City", "Amenity", "Review"]
 
     def do_EOF(self, line):
         """ Function of (End Of File) """
@@ -14,11 +18,16 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         return True
 
-    def do_create(self, line):
+    def do_create(self, args):
         """
         Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id
         """
+        args = shlex.split(args)
+        if args == []:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__myClasses:
+            print("** class doesn't exist **")
         pass
 
     def do_show(self, line):
@@ -27,6 +36,7 @@ class HBNBCommand(cmd.Cmd):
         based on the class name and id
         """
         pass
+
 
     def do_destroy(self, line):
         """
