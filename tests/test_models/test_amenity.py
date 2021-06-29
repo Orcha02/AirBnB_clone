@@ -11,19 +11,23 @@ class TestMyAmenity(unittest.TestCase):
 
     def setUp(self):
         """Setting up"""
-        self.new = Amenity()
+        self.my_amenity = Amenity()
 
     def tearDown(self):
         """Cleaning up after each test"""
-        del self.new
+        del self.my_amenity
 
     def test_is_instance(self):
         """Check if attributes are of a correct type"""
-        self.assertIsInstance(self.new, Amenity)
+        self.assertIsInstance(self.my_amenity, Amenity)
 
     def test_if_str(self):
         """Check if the attribute is str"""
-        self.assertIsInstance(self.new.name, str)
+        self.assertIsInstance(self.my_amenity.name, str)
+
+    def test_is_an_instance(self):
+        """Check if my_model is an instance of BaseModel"""
+        self.assertIsInstance(self.my_amenity, Amenity)
 
 if __name__ == '__main__':
     unittest.main()

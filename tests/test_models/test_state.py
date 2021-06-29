@@ -11,19 +11,23 @@ class TestMyState(unittest.TestCase):
 
     def setUp(self):
         """Setting up"""
-        self.new = State()
+        self.my_state = State()
 
     def tearDown(self):
         """Cleaning up after each test"""
-        del self.new
+        del self.my_state
 
     def test_is_instance(self):
         """Check if an instance belongs to class State"""
-        self.assertIsInstance(self.new, State)
+        self.assertIsInstance(self.my_state, State)
 
     def test_if_str(self):
         """Check if the attribute is str"""
-        self.assertIsInstance(self.new.name, str)
+        self.assertIsInstance(self.my_state.name, str)
+
+    def test_is_an_instance(self):
+        """Check if my_model is an instance of BaseModel"""
+        self.assertIsInstance(self.my_state, State)
 
 if __name__ == '__main__':
     unittest.main()
