@@ -52,13 +52,11 @@ class HBNBCommand(cmd.Cmd):
         if args == []:
             print("** class name missing **")
             return
-
         try:            
             eval(args[0])
         except NameError:
             print("** class doesn't exist **")
             return
-        
         if len(args) == 1:
             print("** instance id missing **")
             return
@@ -70,19 +68,53 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             
 
-    def do_destroy(self, line):
+    def do_destroy(self, args):
         """
         Deletes an instance based on the class name and id
         (save the change into the JSON file)
         """
-        pass
+        args = shlex.split(args)
+        key = ""
+        obj_dict = storage.all()
+        if args == []:
+            print("** class name missing **")
+            return
+        try:            
+            eval(args[0])
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+                
+        key = str(args[0]) + "." + str(args[1])
+        try:
+            del(obj_dict[key])
+        except KeyError:
+            print("** no instance found **")
+        storage.save()
 
-    def do_all(self, line):
+    def do_all(self, args):
         """
         Prints all string representation of all
         instances based or not on the class name
         """
-        pass
+        obj_lst = []
+        obj_dict = storage.all()
+        try:
+            if len(args) != 0:
+                eval(args)
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        for key, val in obj_dict.items():
+            if len(args) != 0:
+                if type(val) is eval(args):
+                    obj_lst.append(val)
+            else:
+                obj_lst.append(val)
+        print(obj_lst)
 
     def do_update(self, line):
         """
