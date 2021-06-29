@@ -66,6 +66,7 @@ class HBNBCommand(cmd.Cmd):
             print(obj_dict[key])
         except KeyError:
             print("** no instance found **")
+            return
             
 
     def do_destroy(self, args):
@@ -93,6 +94,7 @@ class HBNBCommand(cmd.Cmd):
             del(obj_dict[key])
         except KeyError:
             print("** no instance found **")
+            return
         storage.save()
 
     def do_all(self, args):
@@ -116,13 +118,41 @@ class HBNBCommand(cmd.Cmd):
                 obj_lst.append(val)
         print(obj_lst)
 
-    def do_update(self, line):
+    def do_update(self, args):
         """
         Updates an instance based on the class name and id by adding
         or updating attribute (save the change into the JSON file)
         """
-        pass
-
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        args = shlex.split(args)
+        try:
+            eval(args[0])
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+        key = str(args[0]) + "." + str(args[1])
+        obj_dict = storage.all()
+        try:
+            obj_dict[key]
+        except KeyError:
+            print("** no instance found **")
+            return
+        
+        if len(args) == 2:
+            print("** attribute name missing **")
+            return
+        elif len(args) == 3:
+            print("** value missing **")
+            return
+                
+        setattr(obj_dict[key], args[2], args[3])
+        storage.save()
+        
     def emptyline(self):
         """Print a new empty line"""
         if self.lastcmd:
