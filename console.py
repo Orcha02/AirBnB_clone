@@ -1,16 +1,22 @@
 #!/usr/bin/python3
 import cmd
 import shlex
-from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 import models
+
 
 class HBNBCommand(cmd.Cmd):
     """" HBNBcommand class interpreter """
 
     prompt = '(hbnb) '
- 
+
     def do_EOF(self, line):
         """ Function of (End Of File) """
         return True
@@ -24,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
         Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id
         """
-    
+
         try:
             args = shlex.split(args)
             if args == []:
@@ -51,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
         if args == []:
             print("** class name missing **")
             return
-        try:            
+        try:
             eval(args[0])
         except NameError:
             print("** class doesn't exist **")
@@ -59,14 +65,14 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-                
+
         key = str(args[0]) + "." + str(args[1])
         try:
             print(obj_dict[key])
+            return
         except KeyError:
             print("** no instance found **")
             return
-            
 
     def do_destroy(self, args):
         """
@@ -79,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
         if args == []:
             print("** class name missing **")
             return
-        try:            
+        try:
             eval(args[0])
         except NameError:
             print("** class doesn't exist **")
@@ -87,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-                
+
         key = str(args[0]) + "." + str(args[1])
         try:
             del(obj_dict[key])
@@ -114,7 +120,6 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
                 print("** class doesn't exist **")
                 return
-        
         models.storage.reload()
         for i, obj in models.storage.all().items():
             if obj.__class__.__name__ == args[0]:
@@ -145,17 +150,15 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
             return
-        
         if len(args) == 2:
             print("** attribute name missing **")
             return
         elif len(args) == 3:
             print("** value missing **")
             return
-                
         setattr(obj_dict[key], args[2], args[3])
         storage.save()
-        
+
     def emptyline(self):
         """Print a new empty line"""
         if self.lastcmd:

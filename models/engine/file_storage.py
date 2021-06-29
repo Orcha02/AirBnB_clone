@@ -1,8 +1,16 @@
 #!/usr/bin/python3
-""" CLass FileStorage serializes instances to a JSON file and deserializes JSON file to instances """
+""" CLass FileStorage serializes instances to a JSON file and deserializes JSON
+file to instances
+"""
 
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -17,7 +25,7 @@ class FileStorage:
 
     def new(self, obj):
         '''
-            Set in __objects the obj with key <obj class name>.id 
+            Set in __objects the obj with key <obj class name>.id
         '''
         key = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[key] = obj
@@ -26,7 +34,7 @@ class FileStorage:
         '''
             Serializes __objects attribute to JSON file.
         '''
-        obj_dict = {}      
+        obj_dict = {}
 
         with open(FileStorage.__file_path, mode='w', encoding="utf-8") as f:
             if FileStorage.__objects is not None:
@@ -39,7 +47,7 @@ class FileStorage:
             Deserializes the JSON file to __objects.
         '''
         try:
-            with open(self.__file_path, 'r', encoding="utf-8") as f:
+            with open(self.__file_path, mode='r', encoding="utf-8") as f:
                 for key, val in (json.load(f)).items():
                     val = eval(val["__class__"])(**val)
                     self.__objects[key] = val

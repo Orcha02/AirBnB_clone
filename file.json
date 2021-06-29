@@ -1,5 +1,0 @@
-{"BaseModel.3666bd1c-24ca-44cd-b5ff-975ce38c3077": {"id": "3666bd1c-24ca-44cd-b5ff-975ce38c3077", "created_at": "2021-06-28T15:32:54.823588", "updated_at": "2021-06-28T15:32:54.823605", "name": "Holberton", "my_number": 89, "__class__": "BaseModel"}, 
-"BaseModel.8f78c878-5083-4413-b66f-8c66712f1c92": {"id": "8f78c878-5083-4413-b66f-8c66712f1c92", "created_at": "2021-06-28T16:43:40.500493", "updated_at": "2021-06-28T16:43:40.500532", "__class__": "BaseModel"}, 
-"BaseModel.f4521cbf-9140-4cd0-94d6-75c7a70e8c17": {"id": "f4521cbf-9140-4cd0-94d6-75c7a70e8c17", "created_at": "2021-06-28T16:45:16.174256", "updated_at": "2021-06-28T16:45:16.174315", "__class__": "BaseModel"}, 
-"BaseModel.c8c2919f-73a1-4c4d-b300-4b6949387008": {"id": "c8c2919f-73a1-4c4d-b300-4b6949387008", "created_at": "2021-06-28T17:21:40.608701", "updated_at": "2021-06-28T17:21:40.608761", "email": "frankgrijalba@holberton.com", "__class__": "BaseModel"}, 
-"BaseModel.9df174f6-e504-4d58-85f2-9e3f412d5e73": {"id": "9df174f6-e504-4d58-85f2-9e3f412d5e73", "created_at": "2021-06-29T04:30:23.920021", "updated_at": "2021-06-29T04:30:23.920076", "__class__": "BaseModel"}}
