@@ -9,10 +9,28 @@ from models.engine.file_storage import FileStorage
 
 class TestFileStorage(unittest.TestCase):
     """New class to test class Amenity"""
+
+    def setUp(self):
+        """Setting up"""
+        self.my_file_storage = FileStorage()
+
+    def tearDown(self):
+        """Cleaning up after each test"""
+        del self.my_file_storage
+
     def test_is_an_instance(self):
         """Check if my_model is an instance of BaseModel"""
-        my_file_storage = FileStorage()
-        self.assertIsInstance(my_file_storage, FileStorage)
+        self.assertIsInstance(self.my_file_storage, FileStorage)
+
+    def test_module_doc(self):
+        """ Method to check for module documentation."""
+        self.assertTrue(len(self.my_file_storage.__doc__) > 0)
+
+    def test_method_docs(self):
+        """ Method to check for method´s documentation."""
+        for func in dir(FileStorage):
+            self.assertTrue(len(func.__doc__) > 0)
+
 
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""

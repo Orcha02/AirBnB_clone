@@ -78,6 +78,14 @@ class TestMyUser(unittest.TestCase):
         """Check if my_model is an instance of BaseModel"""
         self.assertIsInstance(self.my_user, User)
 
+    def test_module_doc(self):
+        """ Method to check for module documentation."""
+        self.assertTrue(len(self.my_user.__doc__) > 0)
+
+    def test_method_docs(self):
+        """ Method to check for method´s documentation."""
+        for func in dir(User):
+            self.assertTrue(len(func.__doc__) > 0)
 
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""

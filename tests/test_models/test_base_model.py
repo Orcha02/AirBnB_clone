@@ -27,6 +27,15 @@ class TestBaseModel(unittest.TestCase):
         my_BaseModel2 = BaseModel()
         self.assertNotEqual(self.my_BaseModel.id, my_BaseModel2.id)
 
+    def test_module_doc(self):
+        """ Method to check for module documentation."""
+        self.assertTrue(len(self.my_BaseModel.__doc__) > 0)
+
+    def test_method_docs(self):
+        """ Method to check for method´s documentation."""
+        for func in dir(BaseModel):
+            self.assertTrue(len(func.__doc__) > 0)
+
 
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
