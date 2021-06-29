@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Contains the entry point of the command interpreter. """
+
 import cmd
 import shlex
 from models import storage
@@ -30,7 +32,6 @@ class HBNBCommand(cmd.Cmd):
         Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id
         """
-
         try:
             args = shlex.split(args)
             if args == []:
