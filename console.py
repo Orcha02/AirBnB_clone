@@ -4,14 +4,13 @@ import shlex
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models import storage
+import models
 
 class HBNBCommand(cmd.Cmd):
     """" HBNBcommand class interpreter """
 
     prompt = '(hbnb) '
-    myClasses = ["BaseModel", "User", "Place", "State",
-                 "City", "Amenity", "Review"]
-
+ 
     def do_EOF(self, line):
         """ Function of (End Of File) """
         return True
@@ -103,19 +102,23 @@ class HBNBCommand(cmd.Cmd):
         instances based or not on the class name
         """
         obj_lst = []
-        obj_dict = storage.all()
-        try:
-            if len(args) != 0:
-                eval(args)
-        except NameError:
-            print("** class doesn't exist **")
+        args = shlex.split(args)
+        if len(args) == 0:
+            models.storage.reload()
+            for i, obj in models.storage.all().items():
+                obj_lst.append(obj.__str__())
+            print(obj_lst)
             return
-        for key, val in obj_dict.items():
-            if len(args) != 0:
-                if type(val) is eval(args):
-                    obj_lst.append(val)
-            else:
-                obj_lst.append(val)
+        try:
+                eval(args[0])
+        except NameError:
+                print("** class doesn't exist **")
+                return
+        
+        models.storage.reload()
+        for i, obj in models.storage.all().items():
+            if obj.__class__.__name__ == args[0]:
+                obj_lst.append(obj.__str__())
         print(obj_lst)
 
     def do_update(self, args):
