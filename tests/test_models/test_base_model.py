@@ -2,6 +2,7 @@
 """Test module"""
 
 
+import pep8
 import unittest
 from models.base_model import BaseModel
 
@@ -25,3 +26,15 @@ class TestBaseModel(unittest.TestCase):
         """Test if the id of two instances are different"""
         my_BaseModel2 = BaseModel()
         self.assertNotEqual(self.my_BaseModel.id, my_BaseModel2.id)
+
+
+class TestCodeFormat(unittest.TestCase):
+    """Class to do pep8 validation."""
+    def test_pep8(self):
+        """Test that we conform to pep8"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/base_model.py'
+        file2 = 'tests/test_models/test_base_model.py'
+        result = pep8style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warning).")

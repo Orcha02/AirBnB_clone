@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """ Class for base model """
 
@@ -25,7 +26,8 @@ class BaseModel:
 
     def __str__(self):
         """ Str format for references """
-        return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        return ("[{}] ({}) {}".format
+                (self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
         """ Update with current date time """
