@@ -31,6 +31,8 @@ class HBNBCommand(cmd.Cmd):
         """
         Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id
+        Example (replace - with spaces):
+        create-name_of_class
         """
         try:
             args = shlex.split(args)
@@ -51,6 +53,8 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints the string representation of an instance
         based on the class name and id
+        Example (replace - with spaces):
+        show-name_of_class-id_object
         """
         args = shlex.split(args)
         key = ""
@@ -79,6 +83,8 @@ class HBNBCommand(cmd.Cmd):
         """
         Deletes an instance based on the class name and id
         (save the change into the JSON file)
+        Example (replace - with spaces):
+        destroy-name_of_class-id_object
         """
         args = shlex.split(args)
         key = ""
@@ -107,6 +113,10 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representation of all
         instances based or not on the class name
+        If you need all the instances created only
+        with the sentence 'all'.
+        If you need the instances created from a specific class,
+        then type 'all name_of_class'
         """
         obj_lst = []
         args = shlex.split(args)
@@ -131,6 +141,8 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance based on the class name and id by adding
         or updating attribute (save the change into the JSON file)
+        Example (replace - with spaces):
+        update-name_of_class-id_object-attribute-value_attribute
         """
         if len(args) == 0:
             print("** class name missing **")
