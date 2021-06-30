@@ -108,6 +108,3 @@ class TestCodeFormat(unittest.TestCase):
         result = pep8style.check_files([file1, file2])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warning).")
-
-if __name__ == '__main__':
-    unittest.main()
