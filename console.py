@@ -15,7 +15,7 @@ import models
 
 
 class HBNBCommand(cmd.Cmd):
-    """" HBNBcommand class interpreter """
+    """ HBNBcommand class interpreter """
 
     prompt = '(hbnb) '
 
