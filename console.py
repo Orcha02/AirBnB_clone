@@ -112,8 +112,8 @@ class HBNBCommand(cmd.Cmd):
         args = shlex.split(args)
         if len(args) == 0:
             models.storage.reload()
-            for i, obj in models.storage.all().items():
-                obj_lst.append(obj.__str__())
+            for key, val in models.storage.all().items():
+                obj_lst.append(val.__str__())
             print(obj_lst)
             return
         try:
@@ -122,9 +122,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
                 return
         models.storage.reload()
-        for i, obj in models.storage.all().items():
-            if obj.__class__.__name__ == args[0]:
-                obj_lst.append(obj.__str__())
+        for key, val in models.storage.all().items():
+            if val.__class__.__name__ == args[0]:
+                obj_lst.append(val.__str__())
         print(obj_lst)
 
     def do_update(self, args):
@@ -162,9 +162,38 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """Print a new empty line"""
-        if self.lastcmd:
-            self.lastcmd = ""
-            return self.onecmd('\n')
+        return
+
+    def do_count(self, args):
+        '''Counts the number of instances.'''
+        count = 0
+        args = args.split()
+        obj_dict = storage.all()
+        try:
+            eval(args[0])
+        except NameError:
+            print("** class doesn't exist **")
+            return
+
+        for key in obj_dict.values():
+            if args[0] == key.__class__.__name__:
+                count += 1
+        print(count)
+
+    def default(self, args):
+        ''' Default execute the functions. '''
+        functions = {"all": self.do_all, "update": self.do_update,
+                     "show": self.do_show, "count": self.do_count,
+                     "destroy": self.do_destroy, "update": self.do_update}
+        args = (args.replace("(", ".").replace(")", ".")
+                .replace('"', "").replace(",", "").split("."))
+
+        try:
+            cmd_arg = args[0] + " " + args[2]
+            func = functions[args[1]]
+            func(cmd_arg)
+        except:
+            print("*** Unknown syntax:", args[0])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
