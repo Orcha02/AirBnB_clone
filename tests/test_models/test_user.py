@@ -23,6 +23,17 @@ class TestMyUser(unittest.TestCase):
         del self.base
         del self.base2
 
+    def datatype(self):
+        """cleaning up after each test"""
+        self.assertTrue(hasattr(self.my_user, "email"))
+        self.assertEqual(type(self.my_user.email), str)
+        self.assertTrue(hasattr(self.my_user, "password"))
+        self.assertEqual(type(self.my_user.password), str)
+        self.assertTrue(hasattr(self.my_user, "first_name"))
+        self.assertEqual(type(self.my_user.first_name), str)
+        self.assertTrue(hasattr(self.my_user, "last_name"))
+        self.assertEqual(type(self.my_user.last_name), str)
+
     def test_empty_strings_before(self):
         """Check if the strings are empty before assignment"""
         self.assertFalse(self.my_user.email)
