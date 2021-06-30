@@ -5,7 +5,7 @@ from datetime import datetime
 import models
 
 
-class BaseModel:
+class BaseModel():
     """ Class for base model """
 
     def __init__(self, *args, **kwargs):
