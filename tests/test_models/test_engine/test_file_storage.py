@@ -53,6 +53,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(obj), dict)
         self.assertIs(obj, self.storage._FileStorage__objects)
 
+
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
     def test_pep8(self):
