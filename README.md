@@ -1,7 +1,9 @@
-![HBNB](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210701%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210701T033134Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=29e66d3505c8f710752f6f0014c56ecfe94687295085ecc70c6b8b0deb8e4092 "HBNB")
+![HBNB](https://cdn.discordapp.com/attachments/819387081709191179/860006996156612618/E5LqyUNXoAA63h-.png)
 <h1 align="center">0x00. AirBnB clone - The console</h1>
 <p align="center"></p>
+
 ------------
+
 ## Description
 The AirBnB clone project starts now until… the end of the first year. The goal of the project is to deploy on the server a simple copy of the AirBnB website, only some of them to cover all fundamental concepts of the higher level programming track.
 
