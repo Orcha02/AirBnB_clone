@@ -68,6 +68,18 @@ class TestBaseModel(unittest.TestCase):
         second_updated = self.my_BaseModel.updated_at
         self.assertNotEqual(first_updated, second_updated)
 
+    def test_kwargs(self):
+        """Check that has kwargs as attributes values."""
+        self.my_BaseModel.name = "Holberton"
+        self.my_BaseModel.my_number = 89
+        json_attributes = self.my_BaseModel.to_dict()
+
+        my_BaseModel2 = BaseModel(**json_attributes)
+
+        self.assertIsInstance(my_BaseModel2, BaseModel)
+        self.assertIsInstance(json_attributes, dict)
+        self.assertIsNot(self.my_BaseModel, my_BaseModel2)
+
 
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
