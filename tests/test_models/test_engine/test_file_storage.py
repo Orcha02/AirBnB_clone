@@ -31,6 +31,20 @@ class TestFileStorage(unittest.TestCase):
         for func in dir(FileStorage):
             self.assertTrue(len(func.__doc__) > 0)
 
+    def test_path_type(self):
+        """Check if path is of type string"""
+        self.assertIsInstance(self.engine._FileStorage__file_path, str)
+
+    def test_objects(self):
+        """Check __objects attribute"""
+        self.assertEqual(dict, type(my_file_storage.all()))
+
+    def tests(self):
+        """Check if functions are defined."""
+        self.assertTrue(hasattr(self.my_file_storage, 'new'))
+        self.assertTrue(hasattr(self.my_file_storage, 'reload'))
+        self.assertTrue(hasattr(self.my_file_storage, 'save'))
+        self.assertTrue(hasattr(self.my_file_storage, 'all'))
 
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
