@@ -98,6 +98,7 @@ class TestMyUser(unittest.TestCase):
         for func in dir(User):
             self.assertTrue(len(func.__doc__) > 0)
 
+
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
     def test_pep8(self):
