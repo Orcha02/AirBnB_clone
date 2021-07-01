@@ -80,6 +80,11 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(json_attributes, dict)
         self.assertIsNot(self.my_BaseModel, my_BaseModel2)
 
+    def test_args(self):
+        """Check for unused input args."""
+        i = BaseModel("element")
+        self.assertNotIn("element", i.__dict__.values())
+
 
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
