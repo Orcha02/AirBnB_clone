@@ -5,6 +5,7 @@
 import pep8
 import unittest
 from models.base_model import BaseModel
+import datetime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -35,6 +36,37 @@ class TestBaseModel(unittest.TestCase):
         """ Method to check for method´s documentation."""
         for func in dir(BaseModel):
             self.assertTrue(len(func.__doc__) > 0)
+
+    def test_dict_class(self):
+        """Checks if the key __class__ exists"""
+        self.assertEqual("BaseModel",
+                         (self.my_BaseModel.to_dict())["__class__"])
+
+    def test_type_created_at(self):
+        """Test that the new_model's updated_at data type is datetime"""
+        BaseModel_to_dict = self.my_BaseModel.to_dict()
+        new_model = BaseModel(BaseModel_to_dict)
+        self.assertTrue(isinstance(new_model.created_at, datetime.datetime))
+
+    def test_type_updated_at(self):
+        """Test that the new_model's created_at data type is datetime"""
+        BaseModel_to_dict = self.my_BaseModel.to_dict()
+        new_model = BaseModel(BaseModel_to_dict)
+        self.assertTrue(isinstance(new_model.updated_at, datetime.datetime))
+
+    def test_id_type(self):
+        """Checks if id is of type string"""
+        self.assertEqual("<class 'str'>", str(type(self.my_BaseModel.id)))
+
+    def test_save(self):
+        """
+        Check if the attribute updated_at (date) is updated for
+        the same object with the current date
+        """
+        first_updated = self.my_BaseModel.updated_at
+        self.my_BaseModel.save()
+        second_updated = self.my_BaseModel.updated_at
+        self.assertNotEqual(first_updated, second_updated)
 
 
 class TestCodeFormat(unittest.TestCase):
