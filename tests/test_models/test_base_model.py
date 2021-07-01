@@ -6,6 +6,7 @@ import pep8
 import unittest
 from models.base_model import BaseModel
 import datetime
+import os
 
 
 class TestBaseModel(unittest.TestCase):
@@ -84,6 +85,18 @@ class TestBaseModel(unittest.TestCase):
         """Check for unused input args."""
         i = BaseModel("element")
         self.assertNotIn("element", i.__dict__.values())
+
+    def test_save_jsonfile(self):
+        """Check json file."""
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
+        self.my_BaseModel.save()
+        KEY = "BaseModel." + self.my_BaseModel.id
+        with open("file.json", "r") as file:
+            json_text = file.read()
+        self.assertTrue(KEY in json_text)
 
 
 class TestCodeFormat(unittest.TestCase):
