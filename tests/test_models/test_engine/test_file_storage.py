@@ -46,6 +46,13 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(hasattr(self.my_file_storage, 'save'))
         self.assertTrue(hasattr(self.my_file_storage, 'all'))
 
+    def test_all(self):
+        """Check the all"""
+        obj = self.storage.all()
+        self.assertIsNotNone(obj)
+        self.assertEqual(type(obj), dict)
+        self.assertIs(obj, self.storage._FileStorage__objects)
+
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation."""
     def test_pep8(self):
