@@ -8,7 +8,6 @@ header {
 .logo {
   width: 145px;
   height: 60px;
-  padding-left: 20px;
   background: url("../images/logo.png") no-repeat;
-  padding-left: 20px;
+  margin-left: 15px;
 }
