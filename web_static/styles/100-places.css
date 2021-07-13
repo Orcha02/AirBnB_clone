@@ -1,0 +1,157 @@
+.places {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.places h1 {
+  font-size: 30px;
+  width: 100%;
+  padding-left: 15px;
+  padding-top: 20px;
+  margin-bottom: 0px;
+}
+
+.places h2 {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.places article {
+  width: 390px;
+  padding: 20px;
+  margin: 20px;
+  border: #ff5a5f 1px solid;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.price_by_night {
+  color: #ff5a5f;
+  border: #ff5a5f 4px solid;
+  min-width: 60px;
+  height: 60px;
+  font-size: 30px;
+  float: right;
+  margin-top: -70px;
+  border-radius: 50%;
+}
+
+.price_by_night p {
+  margin: 5px;
+  margin-top: 15px;
+}
+
+.information {
+  height: 80px;
+  border-top: #dddddd 1px solid;
+  border-bottom: #dddddd 1px solid;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  padding-left: 35px;
+}
+
+.information p {
+  margin-top: 50px;
+  margin-left: -30px;
+}
+
+.max_guest {
+  width: 100px;
+  background: url(../images/icon_group.png) no-repeat;
+  margin-top: 5px;
+}
+
+.number_rooms {
+  width: 100px;
+  background: url(../images/icon_bed.png) no-repeat;
+  margin-top: 5px;
+}
+
+.number_bathrooms {
+  width: 100px;
+  background: url(../images/icon_bath.png) no-repeat;
+  margin-top: 5px;
+}
+
+.description {
+  text-align: justify;
+  margin-top: -15px;
+}
+
+.user p {
+  text-align: left;
+  margin-left: 0px;
+}
+
+.Amenities h2 {
+  font-size: 16px;
+  text-align: left;
+  margin-top: 40px;
+  padding-bottom: 10px;
+  border-bottom: #dddddd 1px solid;
+}
+
+.amenitieslist {
+  list-style: none;
+  margin-left: -40px;
+  list-style: none;
+}
+
+.amenitieslist p {
+  text-align: start;
+}
+
+.tv p,
+.wifi p,
+.pets p {
+  margin-left: 30px;
+}
+
+.tv {
+  background: url(../images/icon_tv.png) no-repeat;
+  background-position: left;
+  background-size: 20px;
+}
+
+.wifi {
+  background: url(../images/icon_wifi.png) no-repeat;
+  background-position: left;
+  background-size: 20px;
+}
+
+.pets {
+  background: url(../images/icon_pets.png) no-repeat;
+  background-position: left;
+  background-size: 20px;
+}
+
+.reviews {
+  margin-top: 50px;
+}
+
+.reviews h2 {
+  text-align: left;
+  font-size: 16px;
+  border-bottom: solid #dddddd 1px;
+  padding-bottom: 10px;
+}
+
+.reviews h3 {
+  font-size: 15px;
+}
+
+.reviews li {
+  text-align: left;
+  list-style: none;
+  margin-left: -40px;
+}
+
+.reviews p {
+  text-align: left;
+  margin-top: -10px;
+  margin-left: 0px;
+  text-align: justify;
+}
